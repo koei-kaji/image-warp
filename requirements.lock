@@ -8,6 +8,8 @@
 
 -e file:.
 annotated-types==0.5.0
+numpy==1.25.2
+opencv-python==4.8.0.76
 pydantic==2.2.0
 pydantic-core==2.6.0
 typing-extensions==4.7.1
