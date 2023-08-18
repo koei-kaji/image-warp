@@ -19,3 +19,7 @@ test:
 
 .PHONY: pre-commit
 pre-commit: format lint test
+
+.PHONY: streamlit
+streamlit:
+	@rye run streamlit run dev_streamlit/main.py
