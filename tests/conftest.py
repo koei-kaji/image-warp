@@ -30,5 +30,5 @@ def fixt_image_lenna(fixt_path_lenna: Path) -> Tuple[bytes, str]:
 
 
 @pytest.fixture(scope="session")
-def fixt_image_form(fixt_path_form: Path) -> bytes:
+def fixt_image_form(fixt_path_form: Path) -> Tuple[bytes, str]:
     return _image_bytes(fixt_path_form), fixt_path_form.suffix.lstrip(".")
