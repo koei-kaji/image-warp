@@ -9,9 +9,8 @@ on:
       - "**.md"
 
 jobs:
-  build:
+  check-code:
     runs-on: ubuntu-latest
-
     steps:
       #----------------------------------------------
       # check-out repo & set-up python

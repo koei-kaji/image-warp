@@ -69,7 +69,7 @@ if uploaded_file is not None:
     input_data = WarpTransformInputData(
         image_bytes=bytes_data,
         image_extension="jpg",
-        converted_points=CornerPoints(**points), # type: ignore[arg-type]
+        converted_points=CornerPoints(**points),  # type: ignore[arg-type]
     )
     interactor = WarpTransformInteractor()
     output_data = cast(
