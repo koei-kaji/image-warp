@@ -1,0 +1,50 @@
+name: Python Package
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      #----------------------------------------------
+      # check-out repo & set-up python
+      #----------------------------------------------
+      - name: Check out repository
+        id: check-out-repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        id: setup-python
+        uses: actions/setup-python@v4
+        with:
+          cache: "pip"
+
+      - name: Install dependencies
+        id: install-dependencies
+        run: pip install -r requirements-dev.lock
+
+      #----------------------------------------------
+      # run test suite
+      #----------------------------------------------
+      - name: Check format
+        id: check-format
+        run: |
+          ruff check . --select I
+          black --check .
+
+      - name: Lint
+        id: lint
+        run: |
+          ruff check .
+          mypy --show-error-codes .
+
+      - name: Test
+        id: test
+        run: pytest tests
